@@ -4,7 +4,7 @@
   "main": "cli.js",
   "license": "MIT",
   "bin": {
-    "fs-cli": "cli.js"
+    "fsc-cli": "cli.js"
   },
   "dependencies": {
     "commander": "^8.3.0",
