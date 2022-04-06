@@ -5,13 +5,6 @@ const download = require('download-git-repo');
 const pkg = require('./package.json')
 const inquirer = require("inquirer");
 
-program.version(pkg.version, '-v, --version')
-  .command('init <projectName>')
-  .action((projectName) => {
-    askForUseWhichTemplate(projectName)
-  });
-program.parse(process.argv);
-
 const askForUseWhichTemplate = (projectName) => {
   inquirer.prompt([
     {
@@ -23,7 +16,7 @@ const askForUseWhichTemplate = (projectName) => {
     if (answer.whetherNeedNextjs) {
       try {
         console.log('clone nextjs template ...');
-        download('https://github.com/wbh1328551759/nextjs-polkadot-example#main', projectName, {clone: true}, function (err) {
+        download('https://github.com:wbh1328551759/nextjs-polkadot-example#main', projectName, {clone: true}, function (err) {
           console.log(err ? err : 'Nextjs Success')
         })
         //添加wp2vite的命令
@@ -76,3 +69,11 @@ const askForViteOrWebpack = (projectName) => {
       }
     });
 }
+
+program.version(pkg.version, '-v, --version')
+  .command('init <projectName>')
+  .action((projectName) => {
+    askForUseWhichTemplate(projectName)
+  });
+program.parse(process.argv);
+
